@@ -20,9 +20,9 @@ mwhile:
 	ldr x23, [x1, x19, LSL #3]
 	ldr x22, [x0]
 	cmp x23, x22
-	b.le increase_counter
+	b.le continue
 	str x23, [x0]
-increase_counter:
+continue:
 	add x19, x19, #1
 	b mwhile
 

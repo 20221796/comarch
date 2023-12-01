@@ -23,8 +23,8 @@ again:
 	ldxr x10, [x0]
 	cbnz x10, again
 	add x11, xzr, #1
-	stxr r9, x11, [x0]
-	cbnz r9, again
+	stxr w9, x11, [x0]
+	cbnz w9, again
 
 	ldr x23, [x1, x19, LSL #3]
 	ldr x22, [x0]

@@ -27,7 +27,8 @@ mwhile:
 	b.le mexit
 	ldr x24, [x0]
 	cbnz x24, mwhile
-	add x24, xzr, #1
+	add x24, xzr, xzr
+	add x24, x24, #1
 	stxr w23, x24, [x0]  
 	cbnz x23, mwhile
 	ldr x23, [x2, x19, LSL #3]

@@ -1,5 +1,5 @@
 .text
-.global max
+.global fib
 .type fib, STT_FUNC
 
 fib:

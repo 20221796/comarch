@@ -2,12 +2,12 @@
 .global max
 .type max, STT_FUNC
 
-;ADDI X11, XZR, #1
-;again: LDXR X10, [X20, #0]
-;CBNZ X10, again
-;STXR R9, X11, [X20]
-;CBNZ R9, again
-;STUR XZR, [X20, #0]
+// ADDI X11, XZR, #1
+// again: LDXR X10, [X20, #0]
+// CBNZ X10, again
+// STXR R9, X11, [X20]
+// CBNZ R9, again
+// STUR XZR, [X20, #0]
 
 max:
 	sub  sp, sp, #48
@@ -27,8 +27,8 @@ mwhile:
 	b.le mexit
 	ldr x24, [x0]
 	cbnz x24, mwhile
-	addi x24, xzr, #1
-	stxr x23, x24, [x0]  
+	add x24, xzr, #1
+	stxr r23, x24, [x0]  
 	cbnz x23, mwhile
 	ldr x23, [x2, x19, LSL #3]
 	ldr x22, [x1]

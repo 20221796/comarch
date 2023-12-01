@@ -28,6 +28,10 @@ mwhile:
 	ldr x22, [x0]
 	cmp x23, x22
 	b.le continue
+
+	// Check lock before updating
+	ldxr x10, [x3]
+	cbnz x10, continue
 	str x23, [x0]
 continue:
 	add x19, x19, #1

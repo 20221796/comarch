@@ -22,7 +22,8 @@ again:
 	// lock 획득
 	ldxr x10, [x0]
 	cbnz x10, again
-	add x11, xzr, #1
+	add x11, xzr, xzr
+	add x11, x11, #1 //add x11, xzr, #1 하면 오류뜸
 	stxr w9, x11, [x0]
 	cbnz w9, again
 

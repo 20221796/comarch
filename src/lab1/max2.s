@@ -28,7 +28,7 @@ mwhile:
 	ldr x24, [x0]
 	cbnz x24, mwhile
 	add x24, xzr, #1
-	stxr r23, x24, [x0]  
+	stxr w23, x24, [x0]  
 	cbnz x23, mwhile
 	ldr x23, [x2, x19, LSL #3]
 	ldr x22, [x1]

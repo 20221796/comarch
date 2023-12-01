@@ -2,7 +2,6 @@
 .global isEven
 .type isEven, STT_FUNC
 
-
 isEven:
     mov x1, x0
     mov x0, #0

@@ -14,33 +14,30 @@ max:
 	ldr x22, [x1, x19, LSL #3]
 	str x22, [x0]
 
+// Lock acquire
+acquire_lock:
+	ldxr x10, [x3]
+	cbnz x10, acquire_lock
+	mov x10, #1
+	stur x10, [x3]
+
 mwhile:
 	cmp x2, x19
 	b.le mexit
-
-again: 
-	// lock 획득
-	ldxr x10, [x0]
-	cbnz x10, again
-	add x11, xzr, xzr
-	add x11, x11, #1 //add x11, xzr, #1 하면 오류뜸
-	stxr w9, x11, [x0]
-	cbnz w9, again
-
 	ldr x23, [x1, x19, LSL #3]
 	ldr x22, [x0]
 	cmp x23, x22
-	b.le release_lock
+	b.le continue
 	str x23, [x0]
-
-release_lock:
-	// lock 해제
-	stur xzr, [x0, #0]
-
+continue:
 	add x19, x19, #1
 	b mwhile
 
 mexit:
+	// Lock release
+	mov x10, #0
+	stur x10, [x3]
+
 	ldur x23, [sp, #32]
 	ldur x22, [sp, #24]
 	ldur x21, [sp, #16]
@@ -48,4 +45,5 @@ mexit:
 	ldur x19, [sp, #0]
 	add sp, sp, #40
 	br x30
+
 .end

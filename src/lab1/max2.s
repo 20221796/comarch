@@ -30,13 +30,13 @@ again:
 	ldr x23, [x1, x19, LSL #3]
 	ldr x22, [x0]
 	cmp x23, x22
-	b.le continue
+	b.le release_lock
 	str x23, [x0]
 
+release_lock:
 	// lock 해제
 	stur xzr, [x0, #0]
 
-continue:
 	add x19, x19, #1
 	b mwhile
 
@@ -48,5 +48,4 @@ mexit:
 	ldur x19, [sp, #0]
 	add sp, sp, #40
 	br x30
-
 .end

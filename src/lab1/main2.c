@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 extern void max(long long int* lock, long long int* shvar, long long int array[], long long int size);
-long long int lock, shvar;
+long long int lock=0, shvar;
 
 int main() {
     long long int array[5] = {2, 23, 42, 51, 5};

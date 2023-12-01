@@ -20,7 +20,7 @@ L1:
     SUBS XZR, X0, #2    // n < 2을 확인
     B.GE L2              // n >= 2이면 L2로 점프
 
-    ADD X1 XZR, XZR
+    ADD X1, XZR, XZR
     ADD X1, X1, #1     // 결과값 레지스터에 1을 저장
     ADD SP, SP, #16     // 스택에서 2개의 아이템을 제거
     BR X30                // 호출자로 복귀

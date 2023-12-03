@@ -10,7 +10,7 @@ fib:
     stur x19, [sp, #8]            // x19를 저장
     stur x0, [sp, #0]             // 인수 n을 저장
 
-    ldur x0, [sp, #0]             // 인수 n을 x0로 로드
+//    ldur x0, [sp, #0]             // 인수 n을 x0로 로드
     subs xzr, x0, #0              // n == 0을 확인
     b.ne L1                       // n != 0이면 L1로 점프
     mov x0, xzr                   // 결과값 레지스터에 0을 저장

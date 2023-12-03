@@ -39,4 +39,4 @@ L3:
     ldur x30, [sp, #24]
     ldur x29, [sp, #16]
     add sp, sp, #32
-    ret
+    br x30

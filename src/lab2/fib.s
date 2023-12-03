@@ -3,11 +3,11 @@
 .type fib, STT_FUNC
 
 fib:
-    sub sp, sp, #48               // 스택에 6개의 아이템을 위한 공간을 확보
-    stur x30, [sp, #40]           // x30을 저장 (Link Register)
-    stur x29, [sp, #32]           // x29을 저장 (Frame Pointer)
+    sub sp, sp, #32               // 스택에 4개의 아이템을 위한 공간을 확보
+    stur x30, [sp, #24]           // x30을 저장 (Link Register)
+    stur x29, [sp, #16]           // x29을 저장 (Frame Pointer)
     add x29, sp, #0               // x29 (Frame Pointer)를 갱신
-    stur x19, [sp, #16]           // x19를 저장
+    stur x19, [sp, #8]            // x19를 저장
     stur x0, [sp, #0]             // 인수 n을 저장
 
     ldur x0, [sp, #0]             // 인수 n을 x0로 로드
@@ -36,8 +36,8 @@ L2:
     add x0, x0, x19               // fib(n - 1) + fib(n - 2)를 계산하여 결과값 레지스터에 저장
 
 L3:
-    ldur x19, [sp, #16]           // x19를 복구
-    ldur x30, [sp, #40]           // x30를 복구 (Link Register)
-    ldur x29, [sp, #32]           // x29를 복구 (Frame Pointer)
-    add sp, sp, #48               // 스택에서 6개의 아이템을 제거
+    ldur x19, [sp, #8]            // x19를 복구
+    ldur x30, [sp, #24]           // x30를 복구 (Link Register)
+    ldur x29, [sp, #16]           // x29를 복구 (Frame Pointer)
+    add sp, sp, #32               // 스택에서 4개의 아이템을 제거
     ret                           // 호출자로 복귀
